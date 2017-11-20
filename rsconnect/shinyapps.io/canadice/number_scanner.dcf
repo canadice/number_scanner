@@ -1,0 +1,12 @@
+name: number_scanner
+title: number_scanner
+username:
+account: canadice
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 234419
+bundleId: 1086068
+url: https://canadice.shinyapps.io/number_scanner/
+when: 1511198736.59989
+asMultiple: FALSE
+asStatic: FALSE

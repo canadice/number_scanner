@@ -1,4 +1,4 @@
-#
+
 # This is a Shiny web application. You can run the application by clicking
 # the 'Run App' button above.
 #
@@ -10,6 +10,9 @@
 require(shiny, quietly = TRUE)
 require(shinythemes, quietly = TRUE)
 require(bmp, quietly = TRUE)
+require(plyr, quietly = TRUE)
+require(dplyr, quietly = TRUE)
+
 source("functions.R")
 
 # Define UI for application that draws a histogram
@@ -57,21 +60,15 @@ server <- function(input, output) {
   })
   
   output$export_data <- downloadHandler(
-    filename = "raw_data.csv",
+    filename = function(){
+      "raw_data.csv"
+    },
     content = function(file){
       if(is.null(input$data)){
         return(NULL)
       }
-      data <- getData()
-
-      write.csv2(x = data, file = file, row.names = FALSE)
-      # Names <- c("train", "test")
-      # tempdir <- tempdir()
-      # for(i in Names){
-      #   write.csv(x = data[[i]], file = paste0(tempdir, "/", i, ".csv"), row.names = FALSE)
-      # }
-      # tar(tarfile = file, files = tempdir)
       
+      write.csv2(x = getData(), file, row.names = FALSE)
     }
   )
   
